@@ -1,24 +1,26 @@
-async function fetchData(url) {
+async function fetchDataAndLogWeather(location) {
     try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return await response.json();
+        const currentWeatherData = await getCurrentWeather(location);
+
+        const forecastData = await getForecast(location);
+
+        // Store the data in variables for later use
+        const locationName = currentWeatherData.location.name;
+        const localTime = currentWeatherData.location.localTime;
+        const tempInC = currentWeatherData.current.temp_c;
+        const tempInF = currentWeatherData.current.temp_f;
+        const tempCondition = currentWeatherData.current.condition.text;
+        const windKph = currentWeatherData.current.wind_kph;
+        const windMph = currentWeatherData.current.wind_mph;
+        const humidity = currentWeatherData.current.humidity;
+
+        console.log(forecastData);
+        //console.log(forecastData.forecast.forecastday);
+        
+
     } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
+        console.error('Error:', error);
     }
 }
 
-const API_KEY = '1766e056714042da95a203208242604';
-
-async function getCurrentWeather(location) {
-    const url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}`;
-    return await fetchData(url);
-}
-
-async function getForecast(location) {
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}&days=3`;
-    return await fetchData(url);
-}
+fetchDataAndLogWeather('New York');
