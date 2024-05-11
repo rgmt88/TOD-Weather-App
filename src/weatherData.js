@@ -1,10 +1,5 @@
-import { getCurrentWeather, getForecast } from "./fetchData.js";
-
-async function fetchWeatherData(location) {
+export function fetchWeatherData(currentWeatherData, forecastData) {
     try {
-        const currentWeatherData = await getCurrentWeather(location);
-        const forecastData = await getForecast(location);
-
         // Extract necessary details using object destructuring
         const {
             name: locationName,
@@ -54,10 +49,7 @@ async function fetchWeatherData(location) {
         };
 
     } catch (error) {
-        console.error(`Error fetching weather data for ${location}: `, error);
+        console.error(`Error: `, error);
         return null;
     }
 }
-
-const weather = await fetchWeatherData('New York');
-console.log(weather);

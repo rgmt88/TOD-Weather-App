@@ -1,10 +1,5 @@
-import { getCurrentWeather, getForecast } from "./fetchData.js";
-
-async function getNextSixHourForecast(location) {
+export function getNextSixHourForecast(currentWeatherData, forecastData) {
     try {
-        const currentWeatherData = await getCurrentWeather(location);
-        const forecastData = await getForecast(location);
-
         // Parse the local time and find the current hour
         const localTime = new Date(currentWeatherData.location.localtime);
         const currentHour = localTime.getHours();
@@ -40,7 +35,7 @@ async function getNextSixHourForecast(location) {
             }
         });
 
-        console.log(hourlyForecast);
+        //console.log(hourlyForecast);
         return hourlyForecast; // Return this data for use in frontend
 
     } catch (error) {
@@ -48,4 +43,4 @@ async function getNextSixHourForecast(location) {
     }
 }
 
-getNextSixHourForecast('New York');
+//getNextSixHourForecast('New York');

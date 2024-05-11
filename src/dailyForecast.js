@@ -1,17 +1,4 @@
-import { getCurrentWeather, getForecast } from "./fetchData.js";
-
-async function fetchDataAndProcess(location) {
-    try {
-        const currentWeatherData = await getCurrentWeather(location);
-        const forecastData = await getForecast(location);
-
-        await getNextThreeDayForecast(currentWeatherData, forecastData);
-    } catch (error) {
-        console.error('Error: ', error);
-    }
-}
-
-async function getNextThreeDayForecast(currentWeatherData, forecastData) {
+export function getNextThreeDayForecast(currentWeatherData, forecastData) {
     try {
         // Loop through the forecast data for the next three days using .map
         const nextThreeDayForecast = forecastData.forecast.forecastday.slice(0, 3).map(dayData => {
@@ -42,7 +29,7 @@ async function getNextThreeDayForecast(currentWeatherData, forecastData) {
         });
         
         // If required, you can lof or return the data
-        console.log(nextThreeDayForecast);
+        //console.log(nextThreeDayForecast);
         return nextThreeDayForecast;
 
     } catch (error) {
@@ -50,4 +37,4 @@ async function getNextThreeDayForecast(currentWeatherData, forecastData) {
     }
 }
 
-fetchDataAndProcess('New York');
+//fetchDataAndProcess('New York');
