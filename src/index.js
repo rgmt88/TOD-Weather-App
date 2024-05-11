@@ -1,7 +1,9 @@
+import './style.css';
 import { getCurrentWeather, getForecast } from "./fetchData.js";
 import { fetchWeatherData } from "./weatherData.js";
 import { getNextSixHourForecast } from "./hourlyForecast.js";
 import { getNextThreeDayForecast } from "./dailyForecast.js";
+
 
 async function fetchDataAndProcess(location) {
     try {
