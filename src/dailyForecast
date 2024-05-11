@@ -1,8 +1,14 @@
 import { getCurrentWeather, getForecast } from "./fetchData.js";
 
-async function getNextSixDayForecast(location) {
+const location = 'New York';
+const currentWeatherData = await getCurrentWeather(location);
+const forecastData = await getForecast(location);
+
+
+async function getNextSixDayForecast(currentWeatherData, forecastData) {
     try {
         
+
     } catch (error) {
         console.error('Error: ', error);
     }
