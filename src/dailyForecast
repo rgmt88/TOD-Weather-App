@@ -1,0 +1,9 @@
+import { getCurrentWeather, getForecast } from "./fetchData.js";
+
+async function getNextSixDayForecast(location) {
+    try {
+        
+    } catch (error) {
+        console.error('Error: ', error);
+    }
+}

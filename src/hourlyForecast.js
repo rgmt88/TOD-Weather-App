@@ -36,7 +36,7 @@ async function getNextSixHourForecast(location) {
                 tempC: hour.temp_c,
                 tempF: hour.temp_f,
                 condition: hour.condition.text,
-                iconUrl: `https://${hour.condition.icon}`    
+                iconUrl: `https:${hour.condition.icon}`    
             }
         });
 
