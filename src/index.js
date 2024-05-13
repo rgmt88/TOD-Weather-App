@@ -1,26 +1,15 @@
 import './style.css';
-import { getCurrentWeather, getForecast } from "./fetchData.js";
-import { fetchWeatherData } from "./weatherData.js";
-import { getNextSixHourForecast } from "./hourlyForecast.js";
-import { getNextThreeDayForecast } from "./dailyForecast.js";
+import { isValidLocation } from './validLocation.js';
+import { fetchDataAndProcess } from './weatherDataProcessor.js';
 
+document.getElementById('search-button').addEventListener('click', async () => {
+    const locationInput = document.getElementById('location-input').value.trim();
 
-async function fetchDataAndProcess(location) {
-    try {
-        const currentWeatherData = await getCurrentWeather(location);
-        const forecastData = await getForecast(location);
-
-        // Paralleliza fetching of different data types when possible
-        const [current, hours, days] = await Promise.all([
-            fetchWeatherData(currentWeatherData, forecastData),
-            getNextSixHourForecast(currentWeatherData, forecastData),
-            getNextThreeDayForecast(currentWeatherData, forecastData)
-        ]);
-        
-        console.log(current, hours, days);
-    } catch (error) {
-        console.error('Error: ', error);
+    // Validate the input location
+    if(isValidLocation(locationInput)) {
+        // Call the fetchDataAndProcess function
+        await fetchDataAndProcess(locationInput);
+    } else {
+        console.error('Invalid city or ZIP code. Please provide a valid location.');
     }
-}
-
-fetchDataAndProcess('Lima');
+});
