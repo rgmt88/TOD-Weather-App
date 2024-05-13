@@ -14,14 +14,17 @@ document.getElementById('search-button').addEventListener('click', async () => {
 
             // Call the fetchDataAndProcess function
             await fetchDataAndProcess(locationInput);
-
-            // Hide loading state after the process
-            hideLoadingState();
         } catch (error) {
             console.log('Error fetching data: ', error);
             alert('An error occurred while fetching the weather data. Please try again later.');
+        } finally {
+            // Hide loading state after the process
+            hideLoadingState();
+            // Clear the input box
+            locationInput.value = '';
         }
     } else {
         alert('Invalid city or ZIP code. Please provide a valid location.');
     }
 });
+
