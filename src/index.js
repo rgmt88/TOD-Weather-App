@@ -4,7 +4,10 @@ import { fetchDataAndProcess } from './weatherDataProcessor.js';
 import { showLoadingState, hideLoadingState } from './loadingData.js';
 
 document.getElementById('search-button').addEventListener('click', async () => {
-    const locationInput = document.getElementById('location-input').value.trim();
+    // Get the input element
+    const inputElement = document.getElementById('location-input');
+    // Get the trimmed value
+    const locationInput = inputElement.value.trim();
 
     // Validate the input location
     if(isValidLocation(locationInput)) {
@@ -21,7 +24,7 @@ document.getElementById('search-button').addEventListener('click', async () => {
             // Hide loading state after the process
             hideLoadingState();
             // Clear the input box
-            locationInput.value = '';
+            inputElement.value = '';
         }
     } else {
         alert('Invalid city or ZIP code. Please provide a valid location.');
