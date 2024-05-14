@@ -1,4 +1,13 @@
 /* Style for the input and button */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children vertically */
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
 #search-container {
     display: flex;
     align-items: center;
@@ -39,4 +48,31 @@
 #condition-icon {
     width: 50px;
     height: 50px;
+}
+
+#hourly-forecast {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.hourly-grid {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 10px; /* Spacing between items */
+}
+
+.hourly-grid > div {
+    min-width: 120px; /* Minimum width for each hourly item */
+    border: 1px solid #ccc; /* Light border for items */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f4f4f9; /* Light background color */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.hourly-grid img {
+    width: 50px; /* Fixed width for icons */
+    height: 50px; /* Fixed height for icons */
+    margin: 10px auto; /* Center icon and add space around */
 }
