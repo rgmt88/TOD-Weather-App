@@ -15,8 +15,10 @@ export async function fetchDataAndProcess(location) {
             getNextThreeDayForecast(currentWeatherData, forecastData)
         ]);
         
-        console.log(current, hours, days);
+        // Return the collected data
+        return { current, hours, days };
     } catch (error) {
         console.error('Error: ', error);
+        // Rethrow error if it needs to be handled further up the call stack
     }
 }
