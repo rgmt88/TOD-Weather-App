@@ -76,3 +76,29 @@ body {
     height: 50px; /* Fixed height for icons */
     margin: 10px auto; /* Center icon and add space around */
 }
+
+#three-day-forecast {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.three-day-item {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 0; /* Space between items */
+    border-radius: 8px;
+    background-color: #f4f4f9;
+}
+
+.three-day-item img {
+    width: 40px; /* Adjust size as necessary */
+    height: 40px;
+    margin-right: 10px; /* Space between icon and temperature */
+}
+
+.three-day-item p {
+    margin: 0;
+    padding: 0 5px; /* Padding for text */
+}

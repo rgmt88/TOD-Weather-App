@@ -2,7 +2,7 @@ import './style.css';
 import { isValidLocation } from './validLocation.js';
 import { fetchDataAndProcess } from './weatherDataProcessor.js';
 import { showLoadingState, hideLoadingState } from './loadingData.js';
-import { updateCurrentWeatherInfo, updateHourlyForecast } from './updateUI.js';
+import { updateCurrentWeatherInfo, updateHourlyForecast, updateThreeDayForecast } from './updateUI.js';
 
 document.getElementById('search-button').addEventListener('click', async () => {
     // Get the input element
@@ -22,6 +22,7 @@ document.getElementById('search-button').addEventListener('click', async () => {
             // Update UI with the fetched data
             updateCurrentWeatherInfo(weatherData.current);
             updateHourlyForecast(weatherData.hours);
+            updateThreeDayForecast(weatherData.days);
 
             // Hide loading state after the process
             hideLoadingState();

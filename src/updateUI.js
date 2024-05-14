@@ -4,7 +4,7 @@ export function updateCurrentWeatherInfo(current) {
     document.getElementById('temperature').textContent = `${current.tempInC}°`;
     document.getElementById('weather-conditions').textContent = current.tempCondition;
     document.getElementById('condition-icon').src = current.iconUrl;
-    document.getElementById('high-low-temps').textContent = `H:${current.highTempInC}° L:${current.minTempInC}°`;
+    document.getElementById('high-low-temps').textContent = `L:${current.minTempInC}° H:${current.highTempInC}°`;
 
     // Make the weather info visible
     weatherInfoDiv.style.display = 'block';
@@ -23,5 +23,21 @@ export function updateHourlyForecast(hours) {
             <p>${hour.tempC}°</p>
         `;
         container.appendChild(hourDiv);
+    });
+}
+
+export updateThreeDayForecast(days) {
+    const container = document.getElementById('three-day-items');
+    container.innerHTML = '';
+
+    days.forEach(day => {
+        const dayDiv = document.createElement('div');
+        dayDiv.className = 'three-day-item';
+        dayDiv.innerHTML = `
+            <h4>${day.day}</h4>
+            <img src="${day.iconUrl}" alt="Weather icon">
+            <p>L:${day.minTempInC}° H:${day.maxTempInC}°</p>
+        `;
+        container.appendChild(dayDiv);
     });
 }
