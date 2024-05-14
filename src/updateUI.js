@@ -26,7 +26,7 @@ export function updateHourlyForecast(hours) {
     });
 }
 
-export updateThreeDayForecast(days) {
+export function updateThreeDayForecast(days) {
     const container = document.getElementById('three-day-items');
     container.innerHTML = '';
 
