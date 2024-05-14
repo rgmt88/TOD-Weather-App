@@ -2,6 +2,7 @@ import './style.css';
 import { isValidLocation } from './validLocation.js';
 import { fetchDataAndProcess } from './weatherDataProcessor.js';
 import { showLoadingState, hideLoadingState } from './loadingData.js';
+import { updateCurrentWeatherInfo } from './updateUI.js';
 
 document.getElementById('search-button').addEventListener('click', async () => {
     // Get the input element
@@ -16,13 +17,18 @@ document.getElementById('search-button').addEventListener('click', async () => {
             showLoadingState();
 
             // Call the fetchDataAndProcess function
-            await fetchDataAndProcess(locationInput);
+            const weatherData = await fetchDataAndProcess(locationInput);
+
+            // Update UI with the fetched data
+            updateCurrentWeatherInfo(weatherData.current);
+
+            // Hide loading state after the process
+            hideLoadingState();
+
         } catch (error) {
             console.log('Error fetching data: ', error);
             alert('An error occurred while fetching the weather data. Please try again later.');
         } finally {
-            // Hide loading state after the process
-            hideLoadingState();
             // Clear the input box
             inputElement.value = '';
         }
