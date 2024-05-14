@@ -36,7 +36,7 @@ export function updateThreeDayForecast(days) {
         dayDiv.innerHTML = `
             <h4>${day.day}</h4>
             <img src="${day.iconUrl}" alt="Weather icon">
-            <p>L:${day.minTempInC}° H:${day.maxTempInC}°</p>
+            <p>L:${day.minTempInC}° H:${day.highTempInC}°</p>
         `;
         container.appendChild(dayDiv);
     });
