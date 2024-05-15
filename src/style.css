@@ -1,17 +1,21 @@
-/* Style for the input and button */
+html {
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center children vertically */
+    min-height: 100vh;
+    align-items: center;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     font-family: Arial, sans-serif;
 }
 
 #search-container {
     display: flex;
     align-items: center;
-    margin-top: 50px;
+    margin: 25px;
     justify-content: center;
 }
 
@@ -28,77 +32,89 @@ body {
     cursor: pointer;
 }
 
-#weather-info {
+#weather-info, #hourly-forecast, #three-day-forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
     margin-top: 20px;
-    padding: 15px;
-    background-color: #f4f4f9;
-    border-radius: 8px;
+    border-top: 1px solid #f1f1f1; /* Subtle top border for each section */
+}
+
+#weather-info h2, #weather-info p, #hourly-forecast p, #three-day-forecast p {
+    margin: 10px 0;
+    width: 100%;
     text-align: center;
-}
-
-#weather-info h2 {
-    margin: 0.5em 0;
-}
-
-#weather-info p {
-    margin: 0.5em 0;
-    font-size: 1.2em;
 }
 
 #condition-icon {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: auto;
+}
+
+.hourly-grid, #three-day-items {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hourly-grid > div, .three-day-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: transparent;
+}
+
+.hourly-grid img, .three-day-item img {
     width: 50px;
     height: 50px;
+    margin: 10px auto;
 }
 
-#hourly-forecast {
-    margin-top: 20px;
+@media (max-width: 600px) {
+    .hourly-grid > div, .three-day-item {
+        padding: 5px;
+    }
+
+    #weather-info h2, #weather-info p, #hourly-forecast h2, #hourly-forecast p, #three-day-forecast h2, #three-day-forecast p {
+        font-size: 0.8em;
+    }
+}
+
+#site-footer {
+    margin-top: auto; /* Pushes the footer to the bottom of the flex container */
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
     text-align: center;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    border-top: 1px solid #f1f1f1;
 }
 
-.hourly-grid {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px;
-    gap: 10px; /* Spacing between items */
-}
-
-.hourly-grid > div {
-    min-width: 120px; /* Minimum width for each hourly item */
-    border: 1px solid #ccc; /* Light border for items */
-    padding: 10px;
-    border-radius: 8px; /* Rounded corners */
-    background-color: #f4f4f9; /* Light background color */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-}
-
-.hourly-grid img {
-    width: 50px; /* Fixed width for icons */
-    height: 50px; /* Fixed height for icons */
-    margin: 10px auto; /* Center icon and add space around */
-}
-
-#three-day-forecast {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.three-day-item {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 10px 0; /* Space between items */
-    border-radius: 8px;
-    background-color: #f4f4f9;
-}
-
-.three-day-item img {
-    width: 40px; /* Adjust size as necessary */
-    height: 40px;
-    margin-right: 10px; /* Space between icon and temperature */
-}
-
-.three-day-item p {
+.footer-content p {
     margin: 0;
-    padding: 0 5px; /* Padding for text */
+    font-size: 16px;
+    color: #333;
+}
+
+.footer-content a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+.footer-content a:hover, .footer-content a:focus {
+    text-decoration: underline;
 }

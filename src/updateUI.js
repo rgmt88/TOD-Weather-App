@@ -24,6 +24,8 @@ export function updateHourlyForecast(hours) {
         `;
         container.appendChild(hourDiv);
     });
+    // Make the weather info visible
+    document.getElementById('hourly-forecast').style.display = 'flex';
 }
 
 export function updateThreeDayForecast(days) {
@@ -40,4 +42,6 @@ export function updateThreeDayForecast(days) {
         `;
         container.appendChild(dayDiv);
     });
+    // Make the weather info visible
+    document.getElementById('three-day-forecast').style.display = 'flex';
 }
